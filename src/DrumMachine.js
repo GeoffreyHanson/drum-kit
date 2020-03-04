@@ -47,16 +47,12 @@ const DrumPad = (props) => {
   );
 };
 
-const Display = (props) => {
-  const { displayKey } = props;
-  return (
-    <div id="display">
-      Display
-      {displayKey}
-    </div>
-  );
-};
-
+const Display = ({ displayKey }) => (
+  <div id="display">
+    Display
+    {displayKey}
+  </div>
+);
 const DrumMachine = () => {
   const [displayKey, setDisplayKey] = useState(null);
   const keys = [
@@ -116,12 +112,12 @@ const DrumMachine = () => {
     },
   ];
 
-  // function playSound(key, e) {
-  //   const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
-  //   console.log(audio);
-  //   audio.currentTime = 0;
-  //   audio.play();
-  // }
+  function playSound(key, e) {
+    const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+    console.log(audio);
+    audio.currentTime = 0;
+    audio.play();
+  }
 
   return (
     <div id="drum-machine" className="drum-machine">
