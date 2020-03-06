@@ -13,23 +13,17 @@ import tink from './sounds/tink.wav';
 
 const DrumPad = (props) => {
   const {
-    datakey, letter, sound, audio,
+    datakey, letter, sound, audio, setDisplayKey,
   } = props;
 
   const audioRef = useRef(null);
-
-  // Playing audio
-
-  // Restart audio clip?
-
-  // play audio
-  // audio.play();
 
   return (
     <div data-key={datakey} className="drum-pad">
       <KeyboardEventHandler
         handleKeys={[letter]}
         onKeyEvent={() => {
+          setDisplayKey(sound);
           audioRef.current.currentTime = 0;
           audioRef.current.play();
         }}
@@ -49,10 +43,10 @@ const DrumPad = (props) => {
 
 const Display = ({ displayKey }) => (
   <div id="display">
-    Display
     {displayKey}
   </div>
 );
+
 const DrumMachine = () => {
   const [displayKey, setDisplayKey] = useState(null);
   const keys = [
@@ -112,23 +106,8 @@ const DrumMachine = () => {
     },
   ];
 
-  function playSound(key, e) {
-    const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
-    console.log(audio);
-    audio.currentTime = 0;
-    audio.play();
-  }
-
   return (
     <div id="drum-machine" className="drum-machine">
-      <KeyboardEventHandler
-        handleKeys={[
-          'Q', 'W', 'E',
-          'A', 'S', 'D',
-          'Z', 'X', 'C',
-        ]}
-        // handleKeys={[...'QWEASDZXC']}
-      />
       <Display
         displayKey={displayKey}
       />
@@ -142,6 +121,7 @@ const DrumMachine = () => {
             datakey={key.datakey}
             sound={key.sound}
             audio={key.audio}
+            setDisplayKey={setDisplayKey}
           />
         ))}
       </div>
