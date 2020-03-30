@@ -1,6 +1,5 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import './DrumMachine.css';
-import KeyboardEventHandler from 'react-keyboard-event-handler';
 import clap from './sounds/clap.wav';
 import hihat from './sounds/hihat.wav';
 import kick from './sounds/kick.wav';
@@ -11,96 +10,54 @@ import snare from './sounds/snare.wav';
 import tom from './sounds/tom.wav';
 import tink from './sounds/tink.wav';
 
-const DrumPad = (props) => {
-  const {
-    datakey, letter, sound, audio, setDisplayKey,
-  } = props;
-
-  const audioRef = useRef(null);
-
-  return (
-    <div data-key={datakey} className="drum-pad">
-      <KeyboardEventHandler
-        handleKeys={[letter]}
-        onKeyEvent={() => {
-          setDisplayKey(sound);
-          audioRef.current.currentTime = 0;
-          audioRef.current.play();
-        }}
-      />
-      <div>{letter}</div>
-      <span className="sound">{sound}</span>
-      <audio
-        className="clip"
-        id={letter}
-        data-key={datakey}
-        src={audio}
-        ref={audioRef}
-      />
-    </div>
-  );
-};
-
-const Display = ({ displayKey }) => (
-  <div id="display">
-    {displayKey}
-  </div>
-);
+import Display from './components/Display/Display';
+import DrumPad from './components/DrumPad/DrumPad';
 
 const DrumMachine = () => {
   const [displayKey, setDisplayKey] = useState(null);
   const keys = [
     {
       letter: 'Q', // For display on each key
-      datakey: 81, // For identifying the key for the computer
       sound: 'clap', // For identifying/displaying the sound
       audio: clap,
     },
     {
       letter: 'W',
-      datakey: 87,
       sound: 'hihat',
       audio: hihat,
     },
     {
       letter: 'E',
-      datakey: 69,
       sound: 'kick',
       audio: kick,
     },
     {
       letter: 'A',
-      datakey: 65,
       sound: 'openhat',
       audio: openhat,
     },
     {
       letter: 'S',
-      datakey: 83,
       sound: 'boom',
       audio: boom,
     },
     {
       letter: 'D',
-      datakey: 68,
       sound: 'ride',
       audio: ride,
     },
     {
       letter: 'Z',
-      datakey: 90,
       sound: 'snare',
       audio: snare,
     },
     {
       letter: 'X',
-      datakey: 88,
       sound: 'tom',
       audio: tom,
     },
     {
       letter: 'C',
-      datakey: 67,
       sound: 'tink',
       audio: tink,
     },
@@ -112,18 +69,19 @@ const DrumMachine = () => {
         displayKey={displayKey}
       />
       <div className="drum-pads">
-        {keys.map((key) => (
-        // Deconstruct further?
-        // let { letter, datakey, sound } = key;
-          <DrumPad
-            key={key.letter}
-            letter={key.letter}
-            datakey={key.datakey}
-            sound={key.sound}
-            audio={key.audio}
-            setDisplayKey={setDisplayKey}
-          />
-        ))}
+        {keys.map((key) => {
+          const { letter, sound, audio } = key;
+          return (
+          // Deconstruct further?
+            <DrumPad
+              key={letter}
+              letter={letter}
+              sound={sound}
+              audio={audio}
+              setDisplayKey={setDisplayKey}
+            />
+          );
+        })}
       </div>
     </div>
   );
