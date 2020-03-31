@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './DrumMachine.css';
+import styles from './DrumMachine.module.css';
 import clap from './sounds/clap.wav';
 import hihat from './sounds/hihat.wav';
 import kick from './sounds/kick.wav';
@@ -64,11 +64,13 @@ const DrumMachine = () => {
   ];
 
   return (
-    <div id="drum-machine" className="drum-machine">
+    <div id="drummachine" className={styles.drummachine}>
       <Display
         displayKey={displayKey}
       />
-      <div className="drum-pads">
+      <div
+        className={styles.drumpads}
+      >
         {keys.map((key) => {
           const { letter, sound, audio } = key;
           return (
@@ -79,6 +81,7 @@ const DrumMachine = () => {
               sound={sound}
               audio={audio}
               setDisplayKey={setDisplayKey}
+              // className={letter}
             />
           );
         })}

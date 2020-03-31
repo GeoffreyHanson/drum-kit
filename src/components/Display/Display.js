@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styles from './Display.module.css';
 
 const Display = ({ displayKey }) => (
-  <div id="display">
+  <div className={styles.display}>
     {displayKey}
   </div>
 );
