@@ -1,0 +1,25 @@
+body {
+  background-color: burlywood;
+}
+
+.drummachine {
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  flex-direction: column;
+}
+
+.drumpads {
+  border: solid black;
+  border-radius: 10%;
+  background-color: lightgray;
+  display: grid;  
+  justify-content: center;
+  grid-template-columns: 100px 100px 100px;
+  grid-template-rows: 100px 100px 100px;
+  grid-gap: 20px;
+  width: 340px;
+  padding: 50px; 
+  margin-top: 40px; 
+}
+

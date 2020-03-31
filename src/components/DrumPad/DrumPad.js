@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import KeyboardEventHandler from 'react-keyboard-event-handler';
+import styles from './DrumPad.module.css';
 
 const DrumPad = (props) => {
   const {
@@ -10,7 +11,9 @@ const DrumPad = (props) => {
   const audioRef = useRef(null);
 
   return (
-    <div className="drum-pad">
+    <div
+      className={styles.drumpad}
+    >
       <KeyboardEventHandler
         handleKeys={[letter]}
         onKeyEvent={() => {
@@ -19,8 +22,8 @@ const DrumPad = (props) => {
           audioRef.current.play();
         }}
       />
-      <div>{letter}</div>
-      <span className="sound">{sound}</span>
+      <div className={styles.key}>{letter}</div>
+      <div className="sound">{sound}</div>
       <audio
         className="clip"
         id={letter}

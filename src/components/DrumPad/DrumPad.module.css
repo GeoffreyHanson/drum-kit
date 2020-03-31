@@ -1,0 +1,22 @@
+.drumpad {
+  text-align: center;
+  border-radius: 100%;
+  background-image: 
+    linear-gradient(
+      to top left,
+      rgb(255, 255, 255), rgba(255, 255, 255, 0));
+    
+  box-shadow: 
+    7px 7px 15px rgba(55, 84, 170, .15),
+    -7px -7px 20px rgba(255, 255, 255, 1),
+    inset 0px 0px 4px rgba(255, 255, 255, .2),
+    inset 7px 7px 15px rgba(55, 84, 170, 0),
+    inset -7px -7px 20px rgba(255, 255, 255, 0),
+    0px 0px 4px rgba(255, 255, 255, 0);
+}
+
+.key {
+  /* display: flex; */
+  font-size: 18pt;
+  margin-top: 30px;
+}
