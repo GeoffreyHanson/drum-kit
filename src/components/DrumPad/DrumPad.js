@@ -3,17 +3,20 @@ import PropTypes from 'prop-types';
 import KeyboardEventHandler from 'react-keyboard-event-handler';
 import styles from './DrumPad.module.css';
 
+// Logic for individual pads on the drum kit.
 const DrumPad = (props) => {
   const {
     letter, sound, audio, setDisplayKey,
   } = props;
 
+  // Ref for playing sounds
   const audioRef = useRef(null);
 
   return (
     <div
       className={styles.drumpad}
     >
+      {/* Attaching a keyboard event handler from the library for each element. */}
       <KeyboardEventHandler
         handleKeys={[letter]}
         onKeyEvent={() => {
