@@ -13,6 +13,8 @@ import tink from './sounds/tink.wav';
 import Display from './components/Display/Display';
 import DrumPad from './components/DrumPad/DrumPad';
 
+
+// Contains data for each key.
 const DrumMachine = () => {
   const [displayKey, setDisplayKey] = useState(null);
   const keys = [
@@ -74,14 +76,12 @@ const DrumMachine = () => {
         {keys.map((key) => {
           const { letter, sound, audio } = key;
           return (
-          // Deconstruct further?
             <DrumPad
               key={letter}
               letter={letter}
               sound={sound}
               audio={audio}
               setDisplayKey={setDisplayKey}
-              // className={letter}
             />
           );
         })}
