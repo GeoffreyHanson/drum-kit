@@ -16,7 +16,7 @@ const DrumPad = (props) => {
     <div
       className={styles.drumpad}
     >
-      {/* Attaching a keyboard event handler from the library for each element. */}
+      {/* Attaching a keyboard event handler component for each element. */}
       <KeyboardEventHandler
         handleKeys={[letter]}
         onKeyEvent={() => {
